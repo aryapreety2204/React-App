@@ -64,6 +64,7 @@ class App extends React.Component
     this.setState({classComponenet: "class componenet unmounted now:"})
     
     console.log("testing git commit")
+    console.log("testing second commit on github")
   }
   render(){
     return <div>
