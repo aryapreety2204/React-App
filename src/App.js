@@ -3,6 +3,8 @@ import './App.css';
 import React from 'react' ;
 import MyComponent from './MyComponent';
 import MyComponentClass from './MyComponentClass';
+import ChildComponent from './ChildComponent';
+import A from './Componenet/A';
 
 
 // function App() {
@@ -57,28 +59,62 @@ import MyComponentClass from './MyComponentClass';
 // }
 class App extends React.Component
 {
-  state = {classComponenet : <MyComponentClass Color="orange" size="medium" onclick={() => {
-    console.log("this is executed in App.js")
-  }}/> }
+  state = {email: "", password: ""}
+  // state = {classComponenet : <MyComponentClass Color="orange" size="medium" onclick={() => {
+  //   console.log("this is executed in App.js")
+  // }}/> }
   unmountFunction=() =>{
     this.setState({classComponenet: "class componenet unmounted now:"})
     
     console.log("testing git commit")
     console.log("testing second commit on github")
   }
+  parentCallbackFunction = (data)=>{
+    console.log("data in parents:",data);
+  }
+  handleSubmit = (event) =>
+  {
+    event.preventDefault();
+    console.log("email:",this.state.email)
+    console.log("password:",this.state.password)
+    console.log("form is submited");
+  }
+
   render(){
-    return <div>
-          <p>this is paragraph</p>
-          <ul>
-              <li>this is first line 1</li>
-              <li>this is first line 2</li>
-          </ul>
-            <MyComponent Color="yellow" size="medium"/>
-            <br/>
-            {this.state.classComponenet}
-            <br/>
-            <button onClick={this.unmountFunction}>unmounted class comp</button>
-</div>
+    return<div>
+      <A/>
+    </div>
+//     return <div>
+//           <p>this is paragraph</p>
+//           <ul>
+//               <li>this is first line 1</li>
+//               <li>this is first line 2</li>
+//           </ul>
+//             <MyComponent Color="yellow" size="medium"/>
+//             <br/>
+//             {this.state.classComponenet}
+//             <br/>
+//             <button onClick={this.unmountFunction}>unmounted class comp</button>
+//             <br/>
+//             <ChildComponent data="this is my data from parents" callback={this.parentCallbackFunction}/>
+
+//             <br/>
+
+//             <form  onSubmit={this.handleSubmit}>
+//               <h2>Login</h2>
+//               <label>
+//                 Email:
+//                 <input type="email" placeholder='enter email' onChange={event => this.setState({email:event.target.value,password:this.state.password})}></input>
+//               </label><br/>
+//               <label>
+//                 Password:
+//                 <input type="password" placeholder='enter password' onChange={event => this.setState({password:event.target.value,email:this.state.email})}></input>
+//               </label><br/>
+//               <button>Submit</button>
+//             </form>
+
+            
+// </div>
   }
 }
 export default App;
